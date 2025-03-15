@@ -30,12 +30,13 @@ export default function Home() {
   useEffect(() => {
     Prism.highlightAll();
   }, [query]);
-
+  
   const apiUrl = window._env_?.API_URL;
+  
   const onSubmit = useCallback(async (e: any) => {
     e.preventDefault();
     setLoading(true);
-
+    
     // create service post to get data
     const url = `${apiUrl}/api/EasySQL`;
     try {
@@ -61,7 +62,7 @@ export default function Home() {
       setLoading(false);
       notify('La consulta no produjo resultados', 'error', 2000);
     }
-  }, []);
+  }, [apiUrl]);
 
   return (
     <React.Fragment>
