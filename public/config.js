@@ -1,3 +1,3 @@
 window._env_ = {
-    API_URL: "https://localhost:44361"
+    API_URL: "biueasysqlapi20250314231421.azurewebsites.net"
 };
