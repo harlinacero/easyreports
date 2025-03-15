@@ -20,11 +20,22 @@ jobs:
           submodules: true
           lfs: false
       
+      - name: Debug API_URL
+        run: echo "API_URL is set"
+        env:
+          API_URL: ${{ secrets.API_URL }}
             # Step to replace API_URL in config.js
+      
       - name: Replace API_URL in config.js using Node.js
         run: |
-          node -e "const fs = require('fs'); const filePath = 'public/config.js'; const content = fs.readFileSync(filePath, 'utf8'); const updatedContent = content.replace(/const API_URL = \".*\";/, 'const API_URL = \"${{ secrets.API_URL }}\";'); fs.writeFileSync(filePath, updatedContent);"  
-      
+          node -e "
+          const fs = require('fs');
+          const filePath = 'public/config.js';
+          const content = fs.readFileSync(filePath, 'utf8');
+          const updatedContent = content.replace(/const API_URL = \".*\";/, `const API_URL = \"${{ secrets.API_URL }}\";`);
+          fs.writeFileSync(filePath, updatedContent);
+          console.log('Updated config.js:', updatedContent);
+          "     
       - name: Verify config.js content
         run: cat public/config.js
 
