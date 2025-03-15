@@ -3,7 +3,6 @@ import './themes/generated/theme.base.dark.css';
 import './themes/generated/theme.base.css';
 import './themes/generated/theme.additional.dark.css';
 import './themes/generated/theme.additional.css';
-import React, { useEffect } from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import './dx-styles.scss';
 import LoadPanel from 'devextreme-react/load-panel';
