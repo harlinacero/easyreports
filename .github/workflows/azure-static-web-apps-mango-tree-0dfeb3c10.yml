@@ -32,7 +32,7 @@ jobs:
           const fs = require('fs');
           const filePath = 'public/config.js';
           const content = fs.readFileSync(filePath, 'utf8');
-          const updatedContent = content.replace(/const API_URL = \".*\";/, `const API_URL = \"${{ secrets.API_URL }}\";`);
+          const updatedContent = content.replace(/const API_URL = \".*\";/, `const API_URL = \"biueasysqlapi20250314231421.azurewebsites.net";`);
           fs.writeFileSync(filePath, updatedContent);
           console.log('Updated config.js:', updatedContent);
           "     
