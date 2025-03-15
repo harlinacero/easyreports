@@ -21,10 +21,13 @@ jobs:
           lfs: false
       
             # Step to replace API_URL in config.js
-      - name: Replace API_URL in config.js
+      - name: Replace API_URL in config.js using Node.js
         run: |
-          sed -i 's|const API_URL = ".*";|const API_URL = "${{ secrets.API_URL }}";|' public/config.js
-    
+          node -e "const fs = require('fs'); const filePath = 'public/config.js'; const content = fs.readFileSync(filePath, 'utf8'); const updatedContent = content.replace(/const API_URL = \".*\";/, 'const API_URL = \"${{ secrets.API_URL }}\";'); fs.writeFileSync(filePath, updatedContent);"  
+      
+      - name: Verify config.js content
+        run: cat public/config.js
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
