@@ -23,7 +23,7 @@ jobs:
             # Step to replace API_URL in config.js
       - name: Replace API_URL in config.js
         run: |
-          sed -i 's|const API_URL = ".*";|const API_URL = "${{ secrets.API_URL }}";|' path/to/config.js
+          sed -i 's|const API_URL = ".*";|const API_URL = "${{ secrets.API_URL }}";|' public/config.js
     
       - name: Build And Deploy
         id: builddeploy
